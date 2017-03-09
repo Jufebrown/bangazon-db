@@ -62,7 +62,7 @@ db.run(`CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIMARY KEY AU
 // The order's customer id
 // The order's payment option id
 // Whether the order has been paid in full
-db.run(`CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY AUTOINCREMENT, customer_id INTEGER, payment_options_id INTEGER, paid_in_full BOOLEAN)`)
+db.run(`CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY AUTOINCREMENT, customer_id INTEGER, payment_options_id INTEGER, paid_in_full INTEGER)`)
 
 // order_line_items table
 // This table will store the following information
@@ -104,10 +104,14 @@ let paymentOptionsArray = [
 
 // Array for orders table population
 let ordersArray = [
-  {id: 0, paymentOptionName: 'VISA', paymentOptionAccountNumber: '001'},
-  {id: 0, paymentOptionName: 'Mastercard', paymentOptionAccountNumber: '002'},
-  {id: 0, paymentOptionName: 'American Express', paymentOptionAccountNumber: '003'},
-  {id: 0, paymentOptionName: 'Paypal', paymentOptionAccountNumber: '004'},
+  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: 1},
+  {id: 0, customerId: '2', paymentOptionsId: '4', paidInFull: -1},
+  {id: 0, customerId: '5', paymentOptionsId: '3', paidInFull: 1},
+  {id: 0, customerId: '3', paymentOptionsId: '2', paidInFull: -1},
+  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: 1},
+  {id: 0, customerId: '4', paymentOptionsId: '4', paidInFull: 1},
+  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: -1},
+  {id: 0, customerId: '1', paymentOptionsId: '3', paidInFull: 1},
 ]
 
 // Insert each of the employee objects into the database.
