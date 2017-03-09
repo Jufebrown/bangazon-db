@@ -94,6 +94,14 @@ let customerArray = [
   {id: 0, firstName: 'Desi', lastName: 'Arnez', address: '64 Rodeo Dr', city: 'Beverly Hills', state: 'CA', postcode: '90210', phone_number: '555-555-7777'},
 ]
 
+// Array for orders table population
+let ordersArray = [
+  {id: 0, paymentOptionName: 'VISA', paymentOptionAccountNumber: '001'},
+  {id: 0, paymentOptionName: 'Mastercard', paymentOptionAccountNumber: '002'},
+  {id: 0, paymentOptionName: 'American Express', paymentOptionAccountNumber: '003'},
+  {id: 0, paymentOptionName: 'Paypal', paymentOptionAccountNumber: '004'},
+]
+
 // Insert each of the employee objects into the database.
 const populateEmployees = () => {
   employeeArray.forEach(each => {
