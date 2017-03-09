@@ -6,6 +6,10 @@
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('bangazon.sqlite', (err) => console.log('Connected'))
 
+
+/*******************************
+Drop table functions
+*******************************/
 const dropCustomers = () => {
   db.run(`DROP TABLE customers`)
 }
@@ -36,16 +40,49 @@ const dropProducts = () => {
 
 // dropProducts()
 
-// Create a table titled employees with the following columns:
-// id, firstName, lastName, jobTitle, address
+
+/*******************************
+Tables Creation
+*******************************/
+
+// customers table
+// This table will store the following information
+// A unique customer id (integer).
+// customer name
+// street address
+// city
+// state
+// postal code
+// phone number
 db.run(`CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, address TEXT, city TEXT, state TEXT, postcode TEXT, phone_number TEXT)`)
 
+// payment_options table
+// This table will contain the following information
+// A unique payment option id (integer)
+// Payment option name
+// Payment option account number
 db.run(`CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY AUTOINCREMENT, customer_id INTEGER, payment_options_id INTEGER, paid_in_full BOOLEAN)`)
 
+// products table
+// This table will store the following information
+// A unique product id (integer)
+// Product name
+// Product price
 db.run(`CREATE TABLE IF NOT EXISTS order_line_item (order_line_item_id INTEGER PRIMARY KEY AUTOINCREMENT, order_id INTEGER, products_id INTEGER)`)
 
+// orders table
+// This table will store the following information
+// A unique order id (integer)
+// The order's customer id
+// The order's payment option id
+// Whether the order has been paid in full
 db.run(`CREATE TABLE IF NOT EXISTS payment_options (payment_options_id INTEGER PRIMARY KEY AUTOINCREMENT, payment_option_name TEXT, payment_option_account_number TEXT)`)
 
+// order_line_items table
+// This table will store the following information
+// A unique line item id (integer)
+// The order id
+// The product id
 db.run(`CREATE TABLE IF NOT EXISTS products (products_id INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, product_price TEXT)`)
 
 // Create an array of at least 6 objects. Each object should have a key value pair matching each column name in the employees table.
