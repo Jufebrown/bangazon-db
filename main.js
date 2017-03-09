@@ -94,6 +94,37 @@ let customerArray = [
   {id: 0, firstName: 'Desi', lastName: 'Arnez', address: '64 Rodeo Dr', city: 'Beverly Hills', state: 'CA', postcode: '90210', phone_number: '555-555-7777'},
 ]
 
+// Array for orders table population
+let ordersArray = [
+  {id: 0, customerId: 1, paymentOptionsId: 1, paidInFull: 1},
+  {id: 0, customerId: 2, paymentOptionsId: 4, paidInFull: -1},
+  {id: 0, customerId: 5, paymentOptionsId: 3, paidInFull: 1},
+  {id: 0, customerId: 3, paymentOptionsId: 2, paidInFull: -1},
+  {id: 0, customerId: 1, paymentOptionsId: 1, paidInFull: 1},
+  {id: 0, customerId: 4, paymentOptionsId: 4, paidInFull: 1},
+  {id: 0, customerId: 1, paymentOptionsId: 1, paidInFull: -1},
+  {id: 0, customerId: 1, paymentOptionsId: 3, paidInFull: 1},
+]
+
+// Array for order_line_item table population
+let orderLineItemArray = [
+  {id: 0, orderId: 1, productId: 1},
+  {id: 0, orderId: 1, productId: 1},
+  {id: 0, orderId: 2, productId: 1},
+  {id: 0, orderId: 2, productId: 1},
+  {id: 0, orderId: 2, productId: 1},
+  {id: 0, orderId: 3, productId: 1},
+  {id: 0, orderId: 3, productId: 1},
+  {id: 0, orderId: 3, productId: 1},
+  {id: 0, orderId: 4, productId: 1},
+  {id: 0, orderId: 4, productId: 1},
+  {id: 0, orderId: 5, productId: 1},
+  {id: 0, orderId: 6, productId: 1},
+  {id: 0, orderId: 7, productId: 1},
+  {id: 0, orderId: 8, productId: 1},
+  {id: 0, orderId: 8, productId: 1},
+]
+
 // Array for payment_options table population
 let paymentOptionsArray = [
   {id: 0, paymentOptionName: 'VISA', paymentOptionAccountNumber: '001'},
@@ -102,17 +133,6 @@ let paymentOptionsArray = [
   {id: 0, paymentOptionName: 'Paypal', paymentOptionAccountNumber: '004'},
 ]
 
-// Array for orders table population
-let ordersArray = [
-  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: 1},
-  {id: 0, customerId: '2', paymentOptionsId: '4', paidInFull: -1},
-  {id: 0, customerId: '5', paymentOptionsId: '3', paidInFull: 1},
-  {id: 0, customerId: '3', paymentOptionsId: '2', paidInFull: -1},
-  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: 1},
-  {id: 0, customerId: '4', paymentOptionsId: '4', paidInFull: 1},
-  {id: 0, customerId: '1', paymentOptionsId: '1', paidInFull: -1},
-  {id: 0, customerId: '1', paymentOptionsId: '3', paidInFull: 1},
-]
 
 // Insert each of the employee objects into the database.
 const populateEmployees = () => {
