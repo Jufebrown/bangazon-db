@@ -4,17 +4,49 @@
 
 // Create a database that is saved on disk.
 const sqlite3 = require('sqlite3').verbose()
-const db = new sqlite3.Database('employee.sqlite', (err) => console.log('Connected'))
+const db = new sqlite3.Database('bangazon.sqlite', (err) => console.log('Connected'))
 
-const dropEmployees = () => {
-  db.run(`DROP TABLE employees`)
+const dropCustomers = () => {
+  db.run(`DROP TABLE customers`)
 }
 
-// dropEmployees()
+// dropCustomers()
+
+const dropOrders = () => {
+  db.run(`DROP TABLE orders`)
+}
+
+// dropOrders()
+
+const dropOrderLineItem = () => {
+  db.run(`DROP TABLE order_line_item`)
+}
+
+// dropOrderLineItem()
+
+const dropPaymentOptions = () => {
+  db.run(`DROP TABLE payment_options`)
+}
+
+// dropPaymentOptions()
+
+const dropProducts = () => {
+  db.run(`DROP TABLE products`)
+}
+
+// dropProducts()
 
 // Create a table titled employees with the following columns:
 // id, firstName, lastName, jobTitle, address
-db.run(`CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, jobTitle TEXT, address TEXT)`)
+db.run(`CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, address TEXT, city TEXT, state TEXT, postcode TEXT, phone_number TEXT)`)
+
+db.run(`CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY AUTOINCREMENT, customer_id INTEGER, payment_options_id INTEGER, paid_in_full BOOLEAN)`)
+
+db.run(`CREATE TABLE IF NOT EXISTS order_line_item (order_line_item_id INTEGER PRIMARY KEY AUTOINCREMENT, order_id INTEGER, products_id INTEGER)`)
+
+db.run(`CREATE TABLE IF NOT EXISTS payment_options (payment_options_id INTEGER PRIMARY KEY AUTOINCREMENT, payment_option_name TEXT, payment_option_account_number TEXT)`)
+
+db.run(`CREATE TABLE IF NOT EXISTS products (products_id INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, product_price TEXT)`)
 
 // Create an array of at least 6 objects. Each object should have a key value pair matching each column name in the employees table.
 let employeeArray = [
