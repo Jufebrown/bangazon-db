@@ -108,21 +108,21 @@ let ordersArray = [
 
 // Array for order_line_item table population
 let orderLineItemArray = [
-  {id: 0, orderId: 1, productId: 1},
-  {id: 0, orderId: 1, productId: 1},
+  {id: 0, orderId: 1, productId: 4},
+  {id: 0, orderId: 1, productId: 5},
   {id: 0, orderId: 2, productId: 1},
-  {id: 0, orderId: 2, productId: 1},
-  {id: 0, orderId: 2, productId: 1},
+  {id: 0, orderId: 2, productId: 2},
+  {id: 0, orderId: 2, productId: 3},
+  {id: 0, orderId: 3, productId: 4},
+  {id: 0, orderId: 3, productId: 5},
   {id: 0, orderId: 3, productId: 1},
-  {id: 0, orderId: 3, productId: 1},
-  {id: 0, orderId: 3, productId: 1},
-  {id: 0, orderId: 4, productId: 1},
-  {id: 0, orderId: 4, productId: 1},
-  {id: 0, orderId: 5, productId: 1},
-  {id: 0, orderId: 6, productId: 1},
+  {id: 0, orderId: 4, productId: 2},
+  {id: 0, orderId: 4, productId: 3},
+  {id: 0, orderId: 5, productId: 4},
+  {id: 0, orderId: 6, productId: 5},
   {id: 0, orderId: 7, productId: 1},
-  {id: 0, orderId: 8, productId: 1},
-  {id: 0, orderId: 8, productId: 1},
+  {id: 0, orderId: 8, productId: 2},
+  {id: 0, orderId: 8, productId: 3},
 ]
 
 // Array for payment_options table population
@@ -133,6 +133,14 @@ let paymentOptionsArray = [
   {id: 0, paymentOptionName: 'Paypal', paymentOptionAccountNumber: '004'},
 ]
 
+// Array for products table population
+let productsArray = [
+  {id: 0, productName: 'Toe Tunes', productPrice: '19.95'},
+  {id: 0, productName: 'Handerpants', productPrice: '5.67'},
+  {id: 0, productName: 'Picnic Pants', productPrice: '34.97'},
+  {id: 0, productName: 'Stuffed Poop Emoji', productPrice: '49.99'},
+  {id: 0, productName: 'Hairy Earplugs', productPrice: '4.99'},
+]
 
 // Insert each of the employee objects into the database.
 const populateEmployees = () => {
