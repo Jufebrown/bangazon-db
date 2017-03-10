@@ -54,7 +54,16 @@ Tables Creation
 // state
 // postal code
 // phone number
-db.run(`CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, address TEXT, city TEXT, state TEXT, postcode TEXT, phone_number TEXT)`)
+db.run(`CREATE TABLE IF NOT EXISTS customers (
+  customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstName TEXT,
+  lastName TEXT,
+  address TEXT,
+  city TEXT,
+  state TEXT,
+  postcode TEXT,
+  phone_number TEXT
+)`)
 
 // orders table
 // This table will store the following information
@@ -62,28 +71,49 @@ db.run(`CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIMARY KEY AU
 // The order's customer id
 // The order's payment option id
 // Whether the order has been paid in full
-db.run(`CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY AUTOINCREMENT, customer_id INTEGER, payment_options_id INTEGER, paid_in_full INTEGER)`)
+db.run(`CREATE TABLE IF NOT EXISTS orders (
+  order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_id INTEGER,
+  payment_options_id INTEGER,
+  paid_in_full INTEGER,
+  FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+  FOREIGN KEY(payment_options_id) REFERENCES payment_options(payment_options_id)
+)`)
 
 // order_line_items table
 // This table will store the following information
 // A unique line item id (integer)
 // The order id
 // The product id
-db.run(`CREATE TABLE IF NOT EXISTS order_line_item (order_line_item_id INTEGER PRIMARY KEY AUTOINCREMENT, order_id INTEGER, products_id INTEGER)`)
+db.run(`CREATE TABLE IF NOT EXISTS order_line_item (
+  order_line_item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  order_id INTEGER,
+  products_id INTEGER,
+  FOREIGN KEY(order_id) REFERENCES order(order_id),
+  FOREIGN KEY(products_id) REFERENCES products(products_id)
+)`)
 
 // payment_options table
 // This table will contain the following information
 // A unique payment option id (integer)
 // Payment option name
 // Payment option account number
-db.run(`CREATE TABLE IF NOT EXISTS payment_options (payment_options_id INTEGER PRIMARY KEY AUTOINCREMENT, payment_option_name TEXT, payment_option_account_number TEXT)`)
+db.run(`CREATE TABLE IF NOT EXISTS payment_options (
+  payment_options_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  payment_option_name TEXT,
+  payment_option_account_number TEXT
+)`)
 
 // products table
 // This table will store the following information
 // A unique product id (integer)
 // Product name
 // Product price
-db.run(`CREATE TABLE IF NOT EXISTS products (products_id INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, product_price TEXT)`)
+db.run(`CREATE TABLE IF NOT EXISTS products (
+  products_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_name TEXT,
+  product_price TEXT
+)`)
 
 // Array for customer table population
 let customerArray = [
