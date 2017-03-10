@@ -172,6 +172,23 @@ let productsArray = [
   {id: 0, productName: 'Hairy Earplugs', productPrice: '4.99'},
 ]
 
+// Insert each of the customer objects into the database.
+const populateCustomers = () => {
+  employeeArray.forEach(each => {
+    db.run(`INSERT INTO employees VALUES (
+      null,
+      "${each.firstName}",
+      "${each.lastName}",
+      "${each.address}",
+      "${each.city}",
+      "${each.state}",
+      "${each.postcode}",
+      "${each.phone_number}"
+    )`)
+  })
+}
+// populateCustomers()
+
 // Insert each of the employee objects into the database.
 const populateEmployees = () => {
   employeeArray.forEach(each => {
