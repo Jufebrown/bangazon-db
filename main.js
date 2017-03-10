@@ -89,7 +89,7 @@ db.run(`CREATE TABLE IF NOT EXISTS order_line_item (
   order_line_item_id INTEGER PRIMARY KEY AUTOINCREMENT,
   order_id INTEGER,
   products_id INTEGER,
-  FOREIGN KEY(order_id) REFERENCES order(order_id),
+  FOREIGN KEY(order_id) REFERENCES orders(order_id),
   FOREIGN KEY(products_id) REFERENCES products(products_id)
 )`)
 
@@ -187,32 +187,32 @@ const populateCustomers = () => {
     )`)
   })
 }
-// populateCustomers()
+populateCustomers()
 
 // Insert each of the order objects into the database.
 const populateOrders = () => {
   ordersArray.forEach(each => {
     db.run(`INSERT INTO orders VALUES (
       null,
-      each.customerId,
-      each.paymentOptionsId,
-      each.paidInFull
+      ${each.customerId},
+      ${each.paymentOptionsId},
+      ${each.paidInFull}
     )`)
   })
 }
-// populateOrders()
+populateOrders()
 
 // Insert each of the order line items objects into the database.
 const populateOrderLineItems = () => {
   orderLineItemArray.forEach(each => {
     db.run(`INSERT INTO order_line_item VALUES (
       null,
-      each.orderId,
-      each.productId
+      ${each.orderId},
+      ${each.productId}
     )`)
   })
 }
-// populateOrderLineItems()
+populateOrderLineItems()
 
 // Insert each of the payment options objects into the database.
 const populatePaymentOptions = () => {
@@ -224,7 +224,7 @@ const populatePaymentOptions = () => {
     )`)
   })
 }
-// populatePaymentOptions()
+populatePaymentOptions()
 
 // Insert each of the products objects into the database.
 const populateProducts = () => {
@@ -236,7 +236,7 @@ const populateProducts = () => {
     )`)
   })
 }
-// populateProducts()
+populateProducts()
 
 // Write a statement to query the database and console.log() all employee records.
 // db.all(`SELECT * FROM employees`, (err, allRows) => {
@@ -267,9 +267,9 @@ const populateProducts = () => {
 // })
 
 // Write a statement to query the database and console.log() each employees firstName, lastName and address only.
-db.each(`SELECT firstName, lastName, address FROM employees`, (err, row) => {
-  if (err) {
-    return console.log(err.toString())
-  }
-  console.log(row)
-})
+// db.each(`SELECT firstName, lastName, address FROM employees`, (err, row) => {
+//   if (err) {
+//     return console.log(err.toString())
+//   }
+//   console.log(row)
+// })
