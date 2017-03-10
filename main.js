@@ -200,7 +200,6 @@ const populateOrders = () => {
     )`)
   })
 }
-
 // populateOrders()
 
 // Insert each of the order line items objects into the database.
@@ -213,8 +212,19 @@ const populateOrderLineItems = () => {
     )`)
   })
 }
-
 // populateOrderLineItems()
+
+// Insert each of the payment options objects into the database.
+const populatePaymentOptions = () => {
+  paymentOptionsArray.forEach(each => {
+    db.run(`INSERT INTO payment_options VALUES (
+      null,
+      "${each.paymentOptionName}",
+      "${each.paymentOptionAccountNumber}"
+    )`)
+  })
+}
+// populatePaymentOptions()
 
 // Write a statement to query the database and console.log() all employee records.
 // db.all(`SELECT * FROM employees`, (err, allRows) => {
