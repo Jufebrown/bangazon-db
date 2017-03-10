@@ -226,6 +226,18 @@ const populatePaymentOptions = () => {
 }
 // populatePaymentOptions()
 
+// Insert each of the products objects into the database.
+const populateProducts = () => {
+  productsArray.forEach(each => {
+    db.run(`INSERT INTO products VALUES (
+      null,
+      "${each.productName}",
+      "${each.productPrice}"
+    )`)
+  })
+}
+// populateProducts()
+
 // Write a statement to query the database and console.log() all employee records.
 // db.all(`SELECT * FROM employees`, (err, allRows) => {
 //   if (err) {
