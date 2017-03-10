@@ -175,7 +175,7 @@ let productsArray = [
 // Insert each of the customer objects into the database.
 const populateCustomers = () => {
   customerArray.forEach(each => {
-    db.run(`INSERT INTO employees VALUES (
+    db.run(`INSERT INTO customers VALUES (
       null,
       "${each.firstName}",
       "${each.lastName}",
@@ -192,7 +192,7 @@ const populateCustomers = () => {
 // Insert each of the order objects into the database.
 const populateOrders = () => {
   ordersArray.forEach(each => {
-    db.run(`INSERT INTO employees VALUES (
+    db.run(`INSERT INTO orders VALUES (
       null,
       each.customerId,
       each.paymentOptionsId,
@@ -201,7 +201,20 @@ const populateOrders = () => {
   })
 }
 
-// populateEmployees()
+// populateOrders()
+
+// Insert each of the order line items objects into the database.
+const populateOrderLineItems = () => {
+  orderLineItemArray.forEach(each => {
+    db.run(`INSERT INTO order_line_item VALUES (
+      null,
+      each.orderId,
+      each.productId
+    )`)
+  })
+}
+
+// populateOrderLineItems()
 
 // Write a statement to query the database and console.log() all employee records.
 // db.all(`SELECT * FROM employees`, (err, allRows) => {
